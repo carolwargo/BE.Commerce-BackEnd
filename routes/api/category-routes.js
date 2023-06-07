@@ -1,11 +1,12 @@
 //IMPORT parts of sequelize
 const router = require('express').Router();
 //IMPORT db connectio from config.js
-const { Category, Product } = require('../../Develop/models');
+const { Category, Product } = require('../../models');
 
 //FIND all categories (INCLUDE associated Products)
 router.get('/', (req, res) => {
 
+  
   Category.findAll({
     attributes: [
       'id',
