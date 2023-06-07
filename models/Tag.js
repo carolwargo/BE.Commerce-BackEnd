@@ -1,7 +1,7 @@
 // IMPORT parts of sequelize library
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require("sequelize");
 // IMPORT database connection from config.js
-const sequelize = require('../config/connection');
+const sequelize = require("../config/connection");
 
 class Tag extends Model {}
 
@@ -22,7 +22,8 @@ Tag.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Tag',
-});
+    modelName: "Tag",
+  }
+);
 
 module.exports = Tag;
