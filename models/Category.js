@@ -1,29 +1,31 @@
 // IMPORTS parts of sequelize library & database connection from config.js
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 // INITIALIZE Product model (table) by extending off Sequelize's Model class
 class Category extends Model {}
 
 //RULES for Category model
-Category.init({
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
+Category.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    category_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
-  category_name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-}, 
-{
-  sequelize,
-  timestamps: false,
-  freezeTableName: true,
-  underscored: true,
-  modelName: 'category',
-});
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "category",
+  }
+);
 
 module.exports = Category;
