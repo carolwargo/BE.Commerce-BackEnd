@@ -1,8 +1,7 @@
 //CHECK TAG ID ASSOCIATION
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
-const Product = require("Product");
-
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
+const Category = require("../models/Category");
 
 // INITIALIZE Product model (table) by extending off Sequelize's Model class
 class Product extends Model {}
