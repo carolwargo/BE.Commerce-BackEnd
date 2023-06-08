@@ -59,4 +59,4 @@ Product.init(
   }
 );
 
-module.exports = { Product };
+module.exports = {Product};

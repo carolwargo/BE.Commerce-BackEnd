@@ -37,9 +37,4 @@ ProductTag.belongsTo(Tag, {
 });
 
 // EXPORT models
-module.exports = {
-  Category,
-  Product,
-  Tag,
-  ProductTag,
-};
+module.exports = { Category, Product, Tag, ProductTag };
