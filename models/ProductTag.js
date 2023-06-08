@@ -1,7 +1,5 @@
-// IMPORT parts of sequelize library
-const { Model, DataTypes } = require("sequelize");
-// IMPORT database connection from config.js
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 // INITIALIZE
 class ProductTag extends Model {}
