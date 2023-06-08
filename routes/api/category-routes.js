@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
-// FIND all categories
+//Category endpoint
+// GET all categories
 router.get('/', async (req, res) => {
   try {
     const Data = await Category.findAll({
@@ -20,7 +21,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// FIND 1 category by ID (INCLUDE association)
+// GET single category by ID (INCLUDE association)
 router.get('/:id', async (req, res) => {
   try {
     const Data = await Category.findOne({
@@ -59,7 +60,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// UPDATE Category by ID
+// UPDATE Category 
 router.put('/:id', async (req, res) => {
   try {
     const Data = await Category.update(

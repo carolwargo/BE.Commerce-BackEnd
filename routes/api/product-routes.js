@@ -1,9 +1,11 @@
 const router = require('express').Router();
-const { Product, Category, Tag, ProductTag } = require('../../models/index');
+const { Product, Category, Tag, ProductTag } = require('../../models');
 
-// GET all Products (INCLUDE associations: Category & Tag)
+//Product endpoint
+// GET all / FIND allProduct (INCLUDE associations: Category & Tag)
 router.get('/', async (req, res) => {
   try {
+    
     const data = await Product.findAll({
       attributes: ['id', 'product_name', 'price', 'stock'],
       include: [
@@ -26,7 +28,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET a single Product by ID (INCLUDE associations: Category & Tag)
+// GET single Product by ID (INCLUDE associations: Category & Tag)
 router.get('/:id', async (req, res) => {
   try {
     const data = await Product.findOne({
@@ -76,7 +78,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// UPDATE a Product by ID
+// UPDATE a Product 
 router.put('/:id', async (req, res) => {
   try {
     await Product.update(req.body, {

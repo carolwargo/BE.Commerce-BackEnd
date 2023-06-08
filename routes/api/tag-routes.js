@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const { Tag, Product, ProductTag } = require("../../models/index");
+const { Tag, Product, ProductTag } = require("../../models");
 
-// READ
+//Tag endpoint
+// GET all Tag
 router.get("/", async (req, res) => {
   try {
     const tags = await Tag.findAll({
@@ -13,6 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//GET single Tag
 router.get("/:id", async (req, res) => {
   try {
     const tag = await Tag.findByPk(req.params.id, {
@@ -29,7 +31,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// CREATE
+// CREATE new Tag
 router.post("/", async (req, res) => {
   try {
     const tag = await Tag.create(req.body);
@@ -47,7 +49,7 @@ router.put("/:id", async (req, res) => {
       return;
     }
 
-    // UPDATE
+    // UPDATE Tag
     await Tag.update(req.body, {
       where: { id: req.params.id },
     });
@@ -59,7 +61,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// DELETE
+// DELETE Tag
 router.delete("/:id", async (req, res) => {
   try {
     const tag = await Tag.findByPk(req.params.id);
