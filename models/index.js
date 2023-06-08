@@ -6,10 +6,6 @@ const ProductTag = require('./ProductTag');
 // DEFINE associations
 
 //PRODUCT belongs to one Category model
-Product.hasOne(Category, {
-  foreignKey: 'category_id',
-  onDelete: 'CASCADE'
-});
 
 //CATEGORY has many Product models
 Category.hasMany(Product, {
