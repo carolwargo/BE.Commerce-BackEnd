@@ -1,9 +1,31 @@
 {
-  "dependencies": {
-    "dotenv": "^16.1.4",
-    "express": "^4.18.2",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.3.3",
-    "sequelize": "^6.32.0"
-  }
+  "name": "be.commerce-backend",
+  "version": "1.0.0",
+  "description": "Installation\r npm install \r express \r sequelize \r dotenv\r path\r fs\r config",
+  "main": "server.js",
+  
+    "dependencies": {
+      "dotenv": "^16.1.4",
+      "express": "^4.18.2",
+      "mysql": "^2.18.1",
+      "mysql2": "^3.3.3",
+      "sequelize": "^6.32.0"
+    },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/index.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carolwargo/BE.Commerce-BackEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carolwargo/BE.Commerce-BackEnd/issues"
+  },
+  "homepage": "https://github.com/carolwargo/BE.Commerce-BackEnd#readme"
 }
