@@ -34,6 +34,8 @@ Product.init(
         isNumeric: true,
       },
     },
+    //REFERENCE category id in its entirty
+    //!!!!CROSS CHECK
     category_id: {
       type: DataTypes.INTEGER,
       references: {

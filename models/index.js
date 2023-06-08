@@ -6,8 +6,8 @@ const ProductTag = require("./ProductTag");
 // DEFINE associations
 
 //PRODUCT belongs to one Category model
-Product.hasOne(Category, {
-  foreignKey: 'product_id',
+Product.belongsTo(Category, {
+  foreignKey: 'category_id',
   onDelete: 'CASCADE'
 });
 
@@ -19,8 +19,10 @@ Category.hasMany(Product, {
 
 //PRODUCT belongs to many Tag models
 Product.belongsToMany(Tag, {
-  through: ProductTag,
+  through: {
+    model: ProductTag,
   foreignKey: "product_id",
+  },
 });
 
 //TAG belongs to many Product models
@@ -34,11 +36,11 @@ Product.hasMany(Tag, {
 });
 
 Tag. hasMany(Product, {
-  through: ProductTag,
-  foreignKey: "productTag_id",
-})
-
-
+  through: {
+    model: ProductTag,
+   foreignKey: "tag_id",
+  },
+});
 
 // EXPORT models
 module.exports = { Category, Product, Tag, ProductTag };
