@@ -5,7 +5,7 @@ const ProductTag = require("./ProductTag");
 
 // DEFINE associations
 Product.belongsTo(Category, {
-  foreignKey: 'product_id',
+  foreignKey: 'category_id',
   onDelete: 'CASCADE'
 });
 
