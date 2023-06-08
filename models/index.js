@@ -4,36 +4,28 @@ const Tag = require("./Tag");
 const ProductTag = require("./ProductTag");
 
 // DEFINE associations
-Category.hasMany(Product, {
-  foreignKey: "category_id",
-  onDelete: "CASCADE",
+Product.belongsTo(Category, {
+  foreignKey: 'product_id',
+  onDelete: 'CASCADE'
 });
 
-Product.belongsTo(Category, {
-  foreignKey: "category_id",
-  onDelete: "CASCADE",
+Category.hasMany(Product, {
+  foreignKey: 'category_id',
+  onDelete: 'CASCADE'
 });
 
 Product.belongsToMany(Tag, {
   through: ProductTag,
-  as: "product_tags",
-  foreignKey: "product_id",
-  onDelete: "CASCADE",
+  as:'product_tags',
+  foreignKey: 'product_id',
+  onDelete: 'CASCADE'
 });
 
 Tag.belongsToMany(Product, {
   through: ProductTag,
-  as: "product_tags",
-  foreignKey: "tag_id",
-  onDelete: "CASCADE",
-});
-
-ProductTag.belongsTo(Product, {
-  foreignKey: "product_id",
-});
-
-ProductTag.belongsTo(Tag, {
-  foreignKey: "tag_id",
+  as:'product_tags',
+  foreignKey: 'tag_id',
+  onDelete: 'CASCADE'
 });
 
 // EXPORT models
