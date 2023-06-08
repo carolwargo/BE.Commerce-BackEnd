@@ -1,5 +1,18 @@
 # BE.Commerce-BackEnd
 
+Installation
+npm install 
+express 
+sequelize 
+dotenv
+path
+fs
+config
+
+
+
+
+Usage
 
 
 In Insomnia, the user tests 
@@ -12,20 +25,3 @@ In Insomnia, the user tests
 “GET tags,” 
 “GET Categories,” and 
 “GET All Products.”
-----------------------------------------
-GET PRODUCTS:
-“GET One Product.”
-“GET All Products.”
-
-GET CATEGORY:
-“DELETE Category by ID,” 
-“CREATE Category,” and 
-“UPDATE Category.”
-“GET Category by ID,”
-“GET Categories,”
-
-GET TAG:
-“GET tag by id,” 
-“GET tags,” 
-
-
