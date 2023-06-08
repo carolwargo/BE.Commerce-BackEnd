@@ -5,7 +5,7 @@ const { Category, Product } = require("../../models");
 // GET all categories
 router.get("/", async (req, res) => {
   try {
-    const Data = await Category.findAll({
+    const data = await Category.findAll({
       attributes: ["id", "category_name"],
       include: [
         {
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
         },
       ],
     });
-    res.json(Data);
+    res.json(data);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
 // GET single category by ID (INCLUDE association)
 router.get("/:id", async (req, res) => {
   try {
-    const Data = await Category.findOne({
+    const data = await Category.findOne({
       where: {
         id: req.params.id,
       },
@@ -36,11 +36,11 @@ router.get("/:id", async (req, res) => {
         },
       ],
     });
-    if (!Data) {
+    if (!data) {
       res.status(404).json({ message: "No Category found with this id! " });
       return;
     }
-    res.json(Data);
+    res.json(data);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -50,10 +50,10 @@ router.get("/:id", async (req, res) => {
 // CREATE new Category
 router.post("/", async (req, res) => {
   try {
-    const Data = await Category.create({
+    const data = await Category.create({
       category_name: req.body.category_name,
     });
-    res.json(Data);
+    res.json(data);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -63,7 +63,7 @@ router.post("/", async (req, res) => {
 // UPDATE Category
 router.put("/:id", async (req, res) => {
   try {
-    const Data = await Category.update(
+    const data = await Category.update(
       {
         category_name: req.body.category_name,
       },
@@ -73,14 +73,14 @@ router.put("/:id", async (req, res) => {
         },
       }
     );
-    if (!Data[0]) {
+    if (!data[0]) {
       res.status(404).json({
         message:
           "No Category found with this id, so category name update could not be completed",
       });
       return;
     }
-    res.json(Data);
+    res.json(data);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -90,16 +90,16 @@ router.put("/:id", async (req, res) => {
 // DELETE Category of ID
 router.delete("/:id", async (req, res) => {
   try {
-    const Data = await Category.destroy({
+    const data = await Category.destroy({
       where: {
         id: req.params.id,
       },
     });
-    if (!Data) {
+    if (!data) {
       res.status(404).json({ message: "No Category found with this id" });
       return;
     }
-    res.json(Data);
+    res.json(data);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
