@@ -1,22 +1,21 @@
-const router = require('express').Router();
-const { Product, Category, Tag, ProductTag } = require('../../models');
+const router = require("express").Router();
+const { Product, Category, Tag, ProductTag } = require("../../models");
 
 //Product endpoint
 // GET all / FIND allProduct (INCLUDE associations: Category & Tag)
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    
     const data = await Product.findAll({
-      attributes: ['id', 'product_name', 'price', 'stock'],
+      attributes: ["id", "product_name", "price", "stock"],
       include: [
         {
           model: Category,
-          attributes: ['id', 'category_name'],
+          attributes: ["id", "category_name"],
         },
         {
           model: Tag,
-          as: 'product_tags',
-          attributes: ['id', 'tag_name'],
+          as: "product_tags",
+          attributes: ["id", "tag_name"],
           through: { attributes: [] }, // Exclude join table attributes
         },
       ],
@@ -29,28 +28,28 @@ router.get('/', async (req, res) => {
 });
 
 // GET single Product by ID (INCLUDE associations: Category & Tag)
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const data = await Product.findOne({
       where: {
         id: req.params.id,
       },
-      attributes: ['id', 'product_name', 'price', 'stock'],
+      attributes: ["id", "product_name", "price", "stock"],
       include: [
         {
           model: Category,
-          attributes: ['id', 'category_name'],
+          attributes: ["id", "category_name"],
         },
         {
           model: Tag,
-          as: 'product_tags',
-          attributes: ['id', 'tag_name'],
+          as: "product_tags",
+          attributes: ["id", "tag_name"],
           through: { attributes: [] }, // Exclude join table attributes
         },
       ],
     });
     if (!data) {
-      res.status(404).json({ message: 'No Product found with this id!' });
+      res.status(404).json({ message: "No Product found with this id!" });
       return;
     }
     res.json(data);
@@ -61,7 +60,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // CREATE a new Product
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const product = await Product.create(req.body);
     if (req.body.tagIds && req.body.tagIds.length) {
@@ -78,8 +77,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-// UPDATE a Product 
-router.put('/:id', async (req, res) => {
+// UPDATE a Product
+router.put("/:id", async (req, res) => {
   try {
     await Product.update(req.body, {
       where: {
@@ -96,7 +95,7 @@ router.put('/:id', async (req, res) => {
         }))
       );
     }
-    res.status(200).json({ message: 'Product updated successfully.' });
+    res.status(200).json({ message: "Product updated successfully." });
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -104,7 +103,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE a Product by ID
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const data = await Product.destroy({
       where: {
@@ -112,7 +111,7 @@ router.delete('/:id', async (req, res) => {
       },
     });
     if (!data) {
-      res.status(404).json({ message: 'No Product found with this id' });
+      res.status(404).json({ message: "No Product found with this id" });
       return;
     }
     res.json(data);

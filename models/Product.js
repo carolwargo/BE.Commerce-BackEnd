@@ -1,6 +1,6 @@
 //CHECK TAG ID ASSOCIATION
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 // INITIALIZE Product model (table) by extending off Sequelize's Model class
 class Product extends Model {}
@@ -38,20 +38,19 @@ Product.init(
     category_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'category',
-        key: 'id',
+        model: "category",
+        key: "id",
       },
     },
   },
-  
+
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'product',
+    modelName: "product",
   }
 );
 
-module.exports = {Product};
-
+module.exports = { Product };
