@@ -20,7 +20,7 @@ Category.hasMany(Product, {
 Product.belongsToMany(Tag, {
   through: {
     model: ProductTag,
-    foreignKey: 'product_id',
+    foreignKey: 'tag_id',
   },
 });
 
