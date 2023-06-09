@@ -2,61 +2,38 @@ const router = require("express").Router();
 const { Category, Product } = require("../../models");
 
 //Category endpoint
+
 // GET all categories
 router.get("/", async (req, res) => {
   try {
-    const data = await Category.findAll({
-      attributes: ["id", "category_name"],
-      include: [
-        {
-          model: Product,
-          attributes: ["id", "product_name", "price", "stock"],
-        },
-      ],
-    });
-    res.json(data);
+    const categories = await Category.findAll();
+    res.status(200).json(categories);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET single category by ID (INCLUDE association)
+// GET single category by ID
 router.get("/:id", async (req, res) => {
   try {
-    const data = await Category.findOne({
-      where: {
-        id: req.params.id,
-      },
-      attributes: ["id", "category_name"],
-      include: [
-        {
-          model: Product,
-          attributes: ["id", "product_name", "price", "stock"],
-        },
-      ],
-    });
-    if (!data) {
-      res.status(404).json({ message: "No Category found with this id! " });
+    const category = await Category.findByPk(req.params.id);
+    if (!category) {
+      res.status(404).json({ message: "No category found with this id!" });
       return;
     }
-    res.json(data);
+    res.status(200).json(category);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
-// CREATE new Category
+// CREATE a new category
 router.post("/", async (req, res) => {
   try {
-    const data = await Category.create({
-      category_name: req.body.category_name,
-    });
-    res.json(data);
+    const category = await Category.create(req.body);
+    res.status(200).json(category);
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
 
