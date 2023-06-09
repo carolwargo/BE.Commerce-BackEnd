@@ -5,21 +5,9 @@ const { Product, Category, Tag, ProductTag } = require("../../models");
 // GET all / FIND allProduct (INCLUDE associations: Category & Tag)
 router.get("/", async (req, res) => {
   try {
-    const data = await Product.findAll({
-      attributes: ["id", "product_name", "price", "stock"],
-      include: [
-        {
-          model: Category,
-          attributes: ["id", "category_name"],
-        },
-        {
-          model: Tag,
-          as: "tags",
-          attributes: ["id", "tag_name"],
-          through: { attributes: [] }, // Exclude join table attributes
-        },
-      ],
-    });
+    const data = await Product.findAll({   
+      include: [{model: Category, model: Tag}]   
+    })
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -31,23 +19,8 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const data = await Product.findOne({
-      where: {
-        id: req.params.id,
-      },
-      attributes: ["id", "product_name", "price", "stock"],
-      include: [
-        {
-          model: Category,
-          attributes: ["id", "category_name"],
-        },
-        {
-          model: Tag,
-          as: "product_tags",
-          attributes: ["id", "tag_name"],
-          through: { attributes: [] }, // Exclude join table attributes
-        },
-      ],
-    });
+      include: [{model: Category, model: Tag}]        
+    })
     if (!data) {
       res.status(404).json({ message: "No Product found with this id!" });
       return;
@@ -68,7 +41,7 @@ router.post("/", async (req, res) => {
         product_id: product.id,
         tag_id,
       }));
-      await ProductTag.bulkCreate(productTagIdArr);
+      return ProductTag.bulkCreate(productTagIdArr);
     }
     res.status(200).json(product);
   } catch (err) {
@@ -85,7 +58,6 @@ router.put("/:id", async (req, res) => {
         id: req.params.id,
       },
     });
-
     if (req.body.tagIds && req.body.tagIds.length) {
       await ProductTag.destroy({ where: { product_id: req.params.id } });
       await ProductTag.bulkCreate(
