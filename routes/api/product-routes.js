@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Product, Category, Tag, ProductTag } = require("../../models");
 
-// GET all Products (INCLUDE associations: Category & Tag)
+// GET all products (INCLUDE associations: Category & Tag)
 router.get("/", async (req, res) => {
   try {
     const data = await Product.findAll({
@@ -17,7 +17,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET single Product by ID (INCLUDE associations: Category & Tag)
+
+// GET single product by ID (INCLUDE associations: Category & Tag)
 router.get("/:id", async (req, res) => {
   try {
     const data = await Product.findOne({
@@ -35,7 +36,7 @@ router.get("/:id", async (req, res) => {
       ],
     });
     if (!data) {
-      res.status(404).json({ message: "No Product found with this id!" });
+      res.status(404).json({ message: "No product found with this id!" });
       return;
     }
     res.json(data);
@@ -45,17 +46,10 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// CREATE a new Product
+// CREATE a new product
 router.post("/", async (req, res) => {
   try {
     const product = await Product.create(req.body);
-    if (req.body.tagIds && req.body.tagIds.length) {
-      const productTagIdArr = req.body.tagIds.map((tagId) => ({
-        product_id: product.id,
-        tag_id: tagId,
-      }));
-      await ProductTag.bulkCreate(productTagIdArr);
-    }
     res.status(200).json(product);
   } catch (err) {
     console.log(err);
