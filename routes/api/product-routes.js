@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
         },
         {
           model: Tag,
-          as: "product_tags",
+          as: "tags",
           attributes: ["id", "tag_name"],
           through: { attributes: [] }, // Exclude join table attributes
         },
