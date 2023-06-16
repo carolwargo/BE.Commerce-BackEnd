@@ -60,27 +60,25 @@ router.post("/", async (req, res) => {
 // UPDATE a Product
 router.put("/:id", async (req, res) => {
   try {
-    const data = await Product.update(
-      {
-        product_name: req.body.product_name,
+    
+    await Product.update(req.body, {
+      where: {
+        id: req.params.id,
       },
-      {
-        where: {
-          id: req.params.id,
-        },
-      }
-    );
-    if (!data[0]) {
-      res.status(404).json({
-        message:
-          "No Product found with this id, so product name update could not be completed",
-      });
-      return;
+    });
+
+    if (req.body.tagIds && req.body.tagIds.length) {
+      await ProductTag.destroy({ where: { product_id: req.params.id } });
+      const productTagIdArr = req.body.tagIds.map((tagId) => ({
+        product_id: req.params.id,
+        tag_id: tagId,
+      }));
+      await ProductTag.bulkCreate(productTagIdArr);
     }
-    res.json(data);
+    res.status(200).json({ message: "Product updated successfully." });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
 
