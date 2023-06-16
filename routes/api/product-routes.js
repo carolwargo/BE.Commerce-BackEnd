@@ -62,18 +62,18 @@ router.put("/:id", async (req, res) => {
   try {
     const data = await Product.update(
       {
-        product_name: req.body.category_name,
+        product_name: req.body.product_name,
       },
       {
         where: {
           id: req.params.id,
-      },
-    }
-  );
+        },
+      }
+    );
     if (!data[0]) {
       res.status(404).json({
-        message: 
-          "No Category found with this id, so Product name update could not be completed",
+        message:
+          "No Product found with this id, so product name update could not be completed",
       });
       return;
     }
