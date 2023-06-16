@@ -60,7 +60,6 @@ router.post("/", async (req, res) => {
 // UPDATE a Product
 router.put("/:id", async (req, res) => {
   try {
-    
     await Product.update(req.body, {
       where: {
         id: req.params.id,
