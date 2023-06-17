@@ -9,13 +9,13 @@ BE.Commerce is a strictly back-end build was accomplished by modifying starter c
 
 ## Table of Contents
 
--[Description](#description),
--[License](#license),
--[User Story](#user-story),
--[Technologies](#technologies),
--[Installatiion](#installation),
--[Usage](#usage),
--[Questions](#questions)
+-[Description](#description);
+-[License](#license);
+-[User Story](#user-story);
+-[Technologies](#technologies);
+-[Installatiion](#installation);
+-[Usage](#usage);
+-[Questions](#questions);
 
 ## User Story
 
