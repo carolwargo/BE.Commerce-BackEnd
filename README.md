@@ -39,7 +39,7 @@ SO THAT my company can compete with other e-commerce companies
 
 View the following walk-through video, demonstrating route testing using Insomnia. 
 
-[walk-through video:]https://drive.google.com/file/d/1TOuboTkH6Wnqdq4M5ihmrgjnLc0JuD10/view
+[![Walk-Through Video](https://drive.google.com/file/d/1TOuboTkH6Wnqdq4M5ihmrgjnLc0JuD10/view?usp=sharing)](https://drive.google.com/file/d/1TOuboTkH6Wnqdq4M5ihmrgjnLc0JuD10/view?usp=sharing)
 
 ## Questions
 
