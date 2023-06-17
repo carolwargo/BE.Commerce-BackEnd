@@ -45,7 +45,7 @@ View the following walk-through video, demonstrating route testing using Insomni
 
 ![image](https://user-images.githubusercontent.com/84477950/243474429-ab5f177d-0f73-41ba-b9ec-22e05087cec8.png) 
 
-Carol Wargo- 
+Carol Wargo- You can reach me at carolwargo@gmail.com .
 
 "Mom of 2 men & 1 boy- Living the dream, with my glass half full." 
 
