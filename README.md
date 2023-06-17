@@ -5,7 +5,7 @@ BE.Commerce is a strictly back-end build was accomplished by modifying starter c
 
 ## License
 
-![license](https://github.com/carolwargo/BE.Commerce-BackEnd/blob/b09982d308e2cba363cf499737ef7bf2d0810b74/LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ## Table of Contents
 
