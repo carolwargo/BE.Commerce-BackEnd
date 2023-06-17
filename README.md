@@ -8,6 +8,7 @@ BE.Commerce is a strictly back-end build was accomplished by modifying starter c
 ![license](https://github.com/carolwargo/BE.Commerce-BackEnd/blob/b09982d308e2cba363cf499737ef7bf2d0810b74/LICENSE)
 
 ## Table of Contents
+
 -[Description](#description)
 -[License](#license)
 -[User Story](#user-story)
@@ -23,14 +24,13 @@ AS A manager at an internet retail company
 I WANT a back end for my e-commerce website that uses the latest technologies
 SO THAT my company can compete with other e-commerce companies
 ```
-
 ## Technologies
 * node.js
 * express.js
 * sequelize
 * mysql
 * javaScript
-* Insomnia to test routes
+* Insomnia 
 
 ## Installation
 `npm install express sequelize dotenv`
